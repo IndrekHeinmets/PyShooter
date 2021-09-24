@@ -18,7 +18,7 @@ class MainGame():
         self.RED = (200, 25, 25)
 
         # Font
-        self.FONT = pygame.font.SysFont('Futura', 28)
+        self.FONT = pygame.font.Font('font\\futura.ttf', 20)
 
         self.clock = pygame.time.Clock()
         self. screen = pygame.display.set_mode((self.WIDTH + self.SIDE_MARGIN, self.HEIGHT + self.BOTTOM_MARGIN))

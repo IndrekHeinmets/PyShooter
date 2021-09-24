@@ -6,7 +6,7 @@ import pygame
 import random
 import time
 
-pygame.mixer.pre_init(frequency = 44100, size = 16, channels = 2, buffer = 512)
+pygame.mixer.pre_init(frequency=44100, size=16, channels=2, buffer=512)
 pygame.init()
 
 # Screen settings
@@ -43,10 +43,10 @@ bg_scroll = 0
 # Damage settings
 BULLET_DAMAGE_PLAYER = 5
 BULLET_DAMAGE_ENEMY = 25
-GRENADE_DAMAGE_RANGE = [1, 2, 3] # tiles
-GRENADE_DAMAGE = [50, 30, 10] # corresponds to distance
-MINE_DAMAGE_RANGE = [1, 2, 3, 4, 5] # tiles
-MINE_DAMAGE = [95, 80, 50, 30, 15] # corresponds to distance
+GRENADE_DAMAGE_RANGE = [1, 2, 3]  # tiles
+GRENADE_DAMAGE = [50, 30, 10]  # corresponds to distance
+MINE_DAMAGE_RANGE = [1, 2, 3, 4, 5]  # tiles
+MINE_DAMAGE = [95, 80, 50, 30, 15]  # corresponds to distance
 
 # Item box addition settings
 HEALTH_BOX = 30
@@ -70,7 +70,7 @@ JUMP = 2
 DEATH = 3
 
 # Font
-FONT = pygame.font.SysFont('Futura', 28)
+FONT = pygame.font.Font('font\\futura.ttf', 20)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('PyShooter by Inz')
@@ -106,36 +106,52 @@ restart_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer
 exit_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\exit_btn.png').convert_alpha()
 editor_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\editor_btn.png').convert_alpha()
 menu_btn_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\menu_btn.png').convert_alpha()
-exit_to_menu_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\exit_to_menu.png').convert_alpha()
+exit_to_menu_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\exit_to_menu.png').convert_alpha()
 resume_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\resume_btn.png').convert_alpha()
 pause_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\pause_btn.png').convert_alpha()
 # bg images
 sky_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\sky.png').convert_alpha()
-mountain_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\mountain.png').convert_alpha()
-pine1_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine1.png').convert_alpha()
-pine2_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine2.png').convert_alpha()
+mountain_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\mountain.png').convert_alpha()
+pine1_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine1.png').convert_alpha()
+pine2_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine2.png').convert_alpha()
 # title pages
-menu_bg_img = pygame.transform.scale(pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\menu_bg.png').convert_alpha(), (WIDTH, HEIGHT))
-pause_bg_img = pygame.transform.scale(pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\pause_bg.png').convert_alpha(), (WIDTH, HEIGHT))
+menu_bg_img = pygame.transform.scale(
+    pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\menu_bg.png').convert_alpha(),
+    (WIDTH, HEIGHT))
+pause_bg_img = pygame.transform.scale(
+    pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\pause_bg.png').convert_alpha(),
+    (WIDTH, HEIGHT))
 # tiles
 tile_img_list = []
 for i in range(TILE_TYPES):
-    img = pygame.transform.scale(pygame.image.load(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\tile\\{i}.png').convert_alpha(), (TILE_SIZE, TILE_SIZE))
+    img = pygame.transform.scale(
+        pygame.image.load(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\tile\\{i}.png').convert_alpha(),
+        (TILE_SIZE, TILE_SIZE))
     tile_img_list.append(img)
 # ammo
-bullet_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\bullet.png').convert_alpha()
-grenade_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\grenade.png').convert_alpha()
+bullet_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\bullet.png').convert_alpha()
+grenade_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\grenade.png').convert_alpha()
 mine_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\mine.png').convert_alpha()
 # pickups
-health_box_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\health_box.png').convert_alpha()
-ammo_box_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\ammo_box.png').convert_alpha()
-grenade_box_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\grenade_box.png').convert_alpha()
-mine_box_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\mine_box.png').convert_alpha()
+health_box_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\health_box.png').convert_alpha()
+ammo_box_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\ammo_box.png').convert_alpha()
+grenade_box_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\grenade_box.png').convert_alpha()
+mine_box_img = pygame.image.load(
+    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\mine_box.png').convert_alpha()
 item_boxes = {
-    'Health' : health_box_img,
-    'Ammo' : ammo_box_img,
-    'Grenade' : grenade_box_img,
-    'Mine' : mine_box_img
+    'Health': health_box_img,
+    'Ammo': ammo_box_img,
+    'Grenade': grenade_box_img,
+    'Mine': mine_box_img
 }
 
 # Create empty world data list
@@ -144,15 +160,17 @@ for row in range(ROWS):
     r = [-1] * COLS
     world_data.append(r)
 # Load in created level data
-with open(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels\\level{LEVEL}_data.csv', newline='') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',')
+with open(f'levels\\level{LEVEL}_data.csv', newline='') as f:
+    reader = csv.reader(f, delimiter=',')
     for x, row in enumerate(reader):
         for y, tile in enumerate(row):
             world_data[x][y] = int(tile)
 
+
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
+
 
 def draw_bg():
     screen.fill(BG)
@@ -163,15 +181,17 @@ def draw_bg():
         screen.blit(pine1_img, ((i * width) - bg_scroll * 0.8, HEIGHT - pine1_img.get_height() - 120))
         screen.blit(pine2_img, ((i * width) - bg_scroll * 0.9, HEIGHT - pine2_img.get_height()))
 
+
 def load_level():
-    with open(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels\\level{LEVEL}_data.csv', newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',')
+    with open(f'levels\\level{LEVEL}_data.csv', newline='') as f:
+        reader = csv.reader(f, delimiter=',')
         for x, row in enumerate(reader):
             for y, tile in enumerate(row):
                 world_data[x][y] = int(tile)
     world = World()
     player, health_bar = world.process_data(world_data)
     return world, player, health_bar
+
 
 def reset_level():
     enemy_group.empty()
@@ -189,6 +209,7 @@ def reset_level():
         r = [-1] * COLS
         data.append(r)
     return data
+
 
 class Solider(pygame.sprite.Sprite):
     def __init__(self, x, y, type, scale, speed, ammo, grenades, mines):
@@ -224,9 +245,11 @@ class Solider(pygame.sprite.Sprite):
         for type in animation_types:
             temp_list = []
             # Count files in folder
-            num_of_frames = len(os.listdir(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\{self.type}\\{type}'))
+            num_of_frames = len(
+                os.listdir(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\{self.type}\\{type}'))
             for i in range(num_of_frames):
-                img = pygame.image.load(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\{self.type}\\{type}\\{i}.png').convert_alpha()
+                img = pygame.image.load(
+                    f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\{self.type}\\{type}\\{i}.png').convert_alpha()
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
                 temp_list.append(img)
             self.anim_list.append(temp_list)
@@ -312,8 +335,8 @@ class Solider(pygame.sprite.Sprite):
 
         # Update scroll
         if self.type == 'player':
-            if (self.rect.right > WIDTH - SCROLL_THRESH and bg_scroll < (world.level_length * TILE_SIZE) - WIDTH)\
-                or (self.rect.left < SCROLL_THRESH and bg_scroll > abs(dx)):
+            if (self.rect.right > WIDTH - SCROLL_THRESH and bg_scroll < (world.level_length * TILE_SIZE) - WIDTH) \
+                    or (self.rect.left < SCROLL_THRESH and bg_scroll > abs(dx)):
                 self.rect.x -= dx
                 screen_scroll = -dx
 
@@ -323,7 +346,8 @@ class Solider(pygame.sprite.Sprite):
         if self.shoot_cooldown == 0 and self.ammo > 0:
             self.ammo -= 1
             self.shoot_cooldown = 20
-            bullet = Bullet(self.rect.centerx + (self.rect.size[0] * 0.7 * self.direction), self.rect.centery, self.direction)
+            bullet = Bullet(self.rect.centerx + (self.rect.size[0] * 0.7 * self.direction), self.rect.centery,
+                            self.direction)
             shot_fx.play()
             bullet_group.add(bullet)
 
@@ -349,7 +373,8 @@ class Solider(pygame.sprite.Sprite):
                     self.update_action(RUN)
                     self.move_counter += 1
                     # update ai vision
-                    self.vision.center = (self.rect.centerx + ENEMY_VISION_RANGE / 2 * self.direction, self.rect.centery)
+                    self.vision.center = (
+                    self.rect.centerx + ENEMY_VISION_RANGE / 2 * self.direction, self.rect.centery)
 
                     if self.move_counter > TILE_SIZE:
                         self.direction *= -1
@@ -387,11 +412,12 @@ class Solider(pygame.sprite.Sprite):
         if self.health <= 0:
             self.health = 0
             self.speed = 0
-            self.alive =False
+            self.alive = False
             self.update_action(DEATH)
 
     def draw(self):
         screen.blit(pygame.transform.flip(self.image, self.flip, False), self.rect)
+
 
 class World():
     def __init__(self):
@@ -407,35 +433,35 @@ class World():
                     img_rect.x = x * TILE_SIZE
                     img_rect.y = y * TILE_SIZE
                     tile_data = (img, img_rect)
-                    if tile >= 0 and tile <= 8: # Obstacles
+                    if tile >= 0 and tile <= 8:  # Obstacles
                         self.obstacle_list.append(tile_data)
-                    elif tile >= 9 and tile <= 10: # Water
+                    elif tile >= 9 and tile <= 10:  # Water
                         water = Water(img, x * TILE_SIZE, y * TILE_SIZE)
                         water_group.add(water)
-                    elif tile == 12: # Box
+                    elif tile == 12:  # Box
                         self.obstacle_list.append(tile_data)
-                    elif tile >= 11 and tile <= 14 and tile != 12: # Decor
+                    elif tile >= 11 and tile <= 14 and tile != 12:  # Decor
                         decoration = Decoration(img, x * TILE_SIZE, y * TILE_SIZE)
                         decoration_group.add(decoration)
-                    elif tile == 15: # Create player
+                    elif tile == 15:  # Create player
                         player = Solider(x * TILE_SIZE, y * TILE_SIZE, 'player', SOLIDER_SCALE, PLAYER_SPEED, 100, 5, 2)
                         health_bar = HealthBar(105, HEIGHT - 26, player.health, player.max_health)
-                    elif tile == 16: # Create enemy
+                    elif tile == 16:  # Create enemy
                         enemy = Solider(x * TILE_SIZE, y * TILE_SIZE, 'enemy', SOLIDER_SCALE, ENEMY_SPEED, 100, 0, 0)
                         enemy_group.add(enemy)
-                    elif tile == 17: # Create ammo box
+                    elif tile == 17:  # Create ammo box
                         item_box = ItemBox('Ammo', x * TILE_SIZE, y * TILE_SIZE)
                         item_box_group.add(item_box)
-                    elif tile == 18: # Create grenade box
+                    elif tile == 18:  # Create grenade box
                         item_box = ItemBox('Grenade', x * TILE_SIZE, y * TILE_SIZE)
                         item_box_group.add(item_box)
-                    elif tile == 19: # Create mine box
+                    elif tile == 19:  # Create mine box
                         item_box = ItemBox('Mine', x * TILE_SIZE, y * TILE_SIZE)
                         item_box_group.add(item_box)
-                    elif tile == 20: # Create health box
+                    elif tile == 20:  # Create health box
                         item_box = ItemBox('Health', x * TILE_SIZE, y * TILE_SIZE)
                         item_box_group.add(item_box)
-                    elif tile == 21: # Create exit
+                    elif tile == 21:  # Create exit
                         exit = Exit(img, x * TILE_SIZE, y * TILE_SIZE)
                         exit_group.add(exit)
 
@@ -445,6 +471,7 @@ class World():
         for tile in self.obstacle_list:
             tile[1][0] += screen_scroll
             screen.blit(tile[0], tile[1])
+
 
 class Decoration(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
@@ -456,6 +483,7 @@ class Decoration(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += screen_scroll
 
+
 class Water(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -466,6 +494,7 @@ class Water(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += screen_scroll
 
+
 class Exit(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -475,6 +504,7 @@ class Exit(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.x += screen_scroll
+
 
 class ItemBox(pygame.sprite.Sprite):
     def __init__(self, item_type, x, y):
@@ -512,6 +542,7 @@ class ItemBox(pygame.sprite.Sprite):
                         player.mines = 3
             self.kill()
 
+
 class HealthBar():
     def __init__(self, x, y, health, max_health):
         self.x = x
@@ -525,6 +556,7 @@ class HealthBar():
         ratio = self.health / self.max_health
         pygame.draw.rect(screen, GREEN, (self.x, self.y, 150 * ratio, 16))
         pygame.draw.rect(screen, BLACK, (self.x, self.y, 150, 16), 3)
+
 
 class LevelBar():
     def __init__(self, x, y, progress, total_len, level):
@@ -542,6 +574,7 @@ class LevelBar():
         pygame.draw.rect(screen, BLACK, (self.x, self.y, (WIDTH - 120), 12), 2)
         player_icon = pygame.transform.scale(tile_img_list[15], (30, 30))
         screen.blit(player_icon, (self.x + ((WIDTH - 170) * ratio), 8))
+
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, direction):
@@ -566,12 +599,15 @@ class Bullet(pygame.sprite.Sprite):
         if pygame.sprite.spritecollide(player, bullet_group, False):
             if player.alive:
                 player.health -= BULLET_DAMAGE_PLAYER
+                player.rect.x += 5 * self.direction
                 self.kill()
         for enemy in enemy_group:
             if pygame.sprite.spritecollide(enemy, bullet_group, False):
                 if enemy.alive:
                     enemy.health -= BULLET_DAMAGE_ENEMY
+                    enemy.rect.x += 5 * self.direction
                     self.kill()
+
 
 class Grenade(pygame.sprite.Sprite):
     def __init__(self, x, y, direction):
@@ -644,6 +680,7 @@ class Grenade(pygame.sprite.Sprite):
                         abs(self.rect.centery - enemy.rect.centery) < TILE_SIZE * GRENADE_DAMAGE_RANGE[2]:
                     enemy.health -= GRENADE_DAMAGE[2]
 
+
 class Mine(pygame.sprite.Sprite):
     def __init__(self, x, y, direction):
         pygame.sprite.Sprite.__init__(self)
@@ -689,7 +726,7 @@ class Mine(pygame.sprite.Sprite):
         # player collision
         if pygame.sprite.spritecollide(player, mine_group, False):
             if player.alive:
-               self.in_range = True
+                self.in_range = True
 
         # check collision with enemy
         for enemy in enemy_group:
@@ -738,12 +775,14 @@ class Mine(pygame.sprite.Sprite):
 
         return self.exploded, self.in_range
 
+
 class Explosion(pygame.sprite.Sprite):
     def __init__(self, x, y, scale):
         pygame.sprite.Sprite.__init__(self)
         self.anim_list = []
         for i in range(1, 6):
-            img = pygame.image.load(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\explosion\\{i}.png').convert_alpha()
+            img = pygame.image.load(
+                f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\explosion\\{i}.png').convert_alpha()
             img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
             self.anim_list.append(img)
         self.frame_index = 0
@@ -753,17 +792,18 @@ class Explosion(pygame.sprite.Sprite):
         self.counter = 0
 
     def update(self):
-        #scroll
+        # scroll
         self.rect.x += screen_scroll
         EXPLOSION_SPEED = 8
         self.counter += 1
         if self.counter >= EXPLOSION_SPEED:
-            self.counter =0
+            self.counter = 0
             self.frame_index += 1
             if self.frame_index >= len(self.anim_list):
                 self.kill()
             else:
                 self.image = self.anim_list[self.frame_index]
+
 
 class ScreenFade():
     def __init__(self, direction, color, speed):
@@ -775,18 +815,19 @@ class ScreenFade():
     def fade(self):
         fade_complete = False
         self.fade_counter += self.speed
-        if self.direction == 1: # whole screen fade
+        if self.direction == 1:  # whole screen fade
             pygame.draw.rect(screen, self.color, (0 - self.fade_counter, 0, WIDTH // 2, HEIGHT))
             pygame.draw.rect(screen, self.color, (WIDTH // 2 + self.fade_counter, 0, WIDTH, HEIGHT))
             pygame.draw.rect(screen, self.color, (0, 0 - self.fade_counter, WIDTH, HEIGHT // 2))
             pygame.draw.rect(screen, self.color, (0, HEIGHT // 2 + self.fade_counter, WIDTH, HEIGHT))
 
-        if self.direction == 2: # vertical fade down
+        if self.direction == 2:  # vertical fade down
             pygame.draw.rect(screen, self.color, (0, 0, WIDTH, 0 + self.fade_counter))
             if self.fade_counter >= WIDTH:
                 fade_complete = True
 
         return fade_complete
+
 
 # Fades
 intro_fade = ScreenFade(1, BLACK, 5)
@@ -800,7 +841,8 @@ editor_button = button.Button(WIDTH // 2 - 155, HEIGHT // 2 + 65, editor_img, 0.
 menu_button = button.Button(WIDTH // 2 - 100, HEIGHT // 2 - 200, menu_btn_img, 0.7)
 pause_button = button.Button(15, 45, pause_img, 0.07)
 resume_button = button.Button(WIDTH // 2 - (resume_img.get_width() * 0.8) // 2, 480, resume_img, 0.8)
-exit_to_menu_button = button.Button(WIDTH - (exit_to_menu_img.get_width() * 0.6) - 25, HEIGHT - 80, exit_to_menu_img, 0.6)
+exit_to_menu_button = button.Button(WIDTH - (exit_to_menu_img.get_width() * 0.6) - 25, HEIGHT - 80, exit_to_menu_img,
+                                    0.6)
 
 # Sprite groups
 bullet_group = pygame.sprite.Group()
@@ -909,23 +951,23 @@ while run:
             paused = True
 
         # Show ammo
-        draw_text(f'AMMO: {player.ammo}', FONT, WHITE, 300, HEIGHT - 28)
+        draw_text(f'AMMO: {player.ammo}', FONT, WHITE, 300, HEIGHT - 30)
         # Show grenades
-        draw_text(f'FRAGS:', FONT, WHITE, 438, HEIGHT - 28)
+        draw_text(f'FRAGS:', FONT, WHITE, 438, HEIGHT - 30)
         if player.grenades == 0:
-            draw_text('0', FONT, WHITE, 520, HEIGHT - 28)
+            draw_text('0', FONT, WHITE, 520, HEIGHT - 30)
         for x in range(player.grenades):
             scaled_img = pygame.transform.scale(grenade_img, (14, 17))
-            screen.blit(scaled_img, (520 + (x * 21), HEIGHT - 28))
+            screen.blit(scaled_img, (520 + (x * 21), HEIGHT - 26))
         # Show mines
-        draw_text(f'MINES:', FONT, WHITE, 680, HEIGHT - 28)
+        draw_text(f'MINES:', FONT, WHITE, 680, HEIGHT - 30)
         if player.mines == 0:
-            draw_text('0', FONT, WHITE, 755, HEIGHT - 28)
+            draw_text('0', FONT, WHITE, 755, HEIGHT - 30)
         for x in range(player.mines):
             scaled_img = pygame.transform.scale(mine_img, (34, 8))
             screen.blit(scaled_img, (755 + (x * 40), HEIGHT - 20))
         # Show health
-        draw_text(f'HEALTH:', FONT, WHITE, 15, HEIGHT - 28)
+        draw_text(f'HEALTH:', FONT, WHITE, 15, HEIGHT - 30)
         # Show level
         draw_text(f'LEVEL {LEVEL}: ', FONT, BLACK, 15, 16)
         exit_icon = pygame.transform.scale(tile_img_list[21], (25, 25))
@@ -941,12 +983,14 @@ while run:
             if shoot:
                 player.shoot()
             elif grenade and not grenade_thrown and player.grenades > 0:
-                grenade = Grenade(player.rect.centerx + (player.rect.size[0] * 0.5 * player.direction), player.rect.top, player.direction)
+                grenade = Grenade(player.rect.centerx + (player.rect.size[0] * 0.5 * player.direction), player.rect.top,
+                                  player.direction)
                 grenade_group.add(grenade)
                 grenade_thrown = True
                 player.grenades -= 1
             elif mine and not mine_planted and player.mines > 0:
-                mine = Mine(player.rect.centerx + (player.rect.size[0] * 0.5 * player.direction), player.rect.top, player.direction)
+                mine = Mine(player.rect.centerx + (player.rect.size[0] * 0.5 * player.direction), player.rect.top,
+                            player.direction)
                 mine_group.add(mine)
                 mine_planted = True
                 player.mines -= 1
