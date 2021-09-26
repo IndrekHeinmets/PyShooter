@@ -45,24 +45,24 @@ class MainGame():
         self.entries = []
 
         # Load bg images
-        self.sky_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\sky.png').convert_alpha()
-        self.mountain_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\mountain.png').convert_alpha()
-        self.pine1_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine1.png').convert_alpha()
-        self.pine2_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine2.png').convert_alpha()
+        self.sky_img = pygame.image.load('img\\background\\sky.png').convert_alpha()
+        self.mountain_img = pygame.image.load('img\\background\\mountain.png').convert_alpha()
+        self.pine1_img = pygame.image.load('img\\background\\pine1.png').convert_alpha()
+        self.pine2_img = pygame.image.load('img\\background\\pine2.png').convert_alpha()
 
         # Load tile images
         self.tile_img_list = []
         for i in range(self.TILE_TYPES):
-            self.img = pygame.transform.scale(pygame.image.load(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\tile\\{i}.png').convert_alpha(), (self.TILE_SIZE, self.TILE_SIZE))
+            self.img = pygame.transform.scale(pygame.image.load(f'img\\tile\\{i}.png').convert_alpha(), (self.TILE_SIZE, self.TILE_SIZE))
             self.tile_img_list.append(self.img)
 
         # Load UI images
-        self.save_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\save_btn.png').convert_alpha()
-        self.load_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\load_btn.png').convert_alpha()
-        self.menu_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\menu_ed_btn.png').convert_alpha()
-        self.delete_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\delete_btn.png').convert_alpha()
-        self.yes_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\yes_btn.png').convert_alpha()
-        self.no_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\no_btn.png').convert_alpha()
+        self.save_img = pygame.image.load('img\\save_btn.png').convert_alpha()
+        self.load_img = pygame.image.load('img\\load_btn.png').convert_alpha()
+        self.menu_img = pygame.image.load('img\\menu_ed_btn.png').convert_alpha()
+        self.delete_img = pygame.image.load('img\\delete_btn.png').convert_alpha()
+        self.yes_img = pygame.image.load('img\\yes_btn.png').convert_alpha()
+        self.no_img = pygame.image.load('img\\no_btn.png').convert_alpha()
 
     def draw_text(self, text, font, text_col, x, y):
             self.img = font.render(text, True, text_col)
@@ -105,7 +105,7 @@ class MainGame():
         self.create_world()
 
     def load_world_data(self):
-        with open(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels\\level{self.level}_data.csv',
+        with open(f'levels\\level{self.level}_data.csv',
                   newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
             for x, row in enumerate(reader):
@@ -114,7 +114,7 @@ class MainGame():
         return self.world_data
 
     def save_world_file(self):
-        with open(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels\\level{self.level}_data.csv', 'w', newline='') as csvfile:
+        with open(f'levels\\level{self.level}_data.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
             for row in self.world_data:
                 writer.writerow(row)
@@ -160,7 +160,7 @@ class MainGame():
                 self.file_not_found = False
                 self.saved = False
                 self.file_removed = False
-                self.entries = os.listdir('C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels')
+                self.entries = os.listdir('levels')
                 if (f'level{self.level}_data.csv') in self.entries:
                     self.file_already_exists = True
                 else:
@@ -173,7 +173,7 @@ class MainGame():
                 self.saved = False
                 self.file_not_found = False
                 self.file_already_exists = False
-                self.entries = os.listdir('C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels')
+                self.entries = os.listdir('levels')
                 if (f'level{self.level}_data.csv') not in self.entries:
                     self.file_not_found = True
                 else:
@@ -185,8 +185,7 @@ class MainGame():
                     pygame.draw.rect(self.screen, self.RED, self.yes_button.rect, 3)
                     self.delete_conf = False
                     try:
-                        os.remove(
-                            f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\levels\\level{self.level}_data.csv')
+                        os.remove(f'levels\\level{self.level}_data.csv')
                         self.file_removed = True
                     except FileNotFoundError:
                         self.file_not_found = True
