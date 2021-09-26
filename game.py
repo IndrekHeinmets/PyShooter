@@ -86,67 +86,51 @@ mine = False
 mine_planted = False
 
 # Load music/sounds
-jump_fx = pygame.mixer.Sound('C:\\Users\\inzah\\Documents\\Python\\Platformer\\audio\\jump.wav')
+jump_fx = pygame.mixer.Sound('audio\\jump.wav')
 jump_fx.set_volume(0.2)
-shot_fx = pygame.mixer.Sound('C:\\Users\\inzah\\Documents\\Python\\Platformer\\audio\\shot.wav')
+shot_fx = pygame.mixer.Sound('audio\\shot.wav')
 shot_fx.set_volume(0.2)
-explosion_fx = pygame.mixer.Sound('C:\\Users\\inzah\\Documents\\Python\\Platformer\\audio\\grenade.wav')
+explosion_fx = pygame.mixer.Sound('audio\\grenade.wav')
 explosion_fx.set_volume(0.2)
-pickup_fx = pygame.mixer.Sound('C:\\Users\\inzah\\Documents\\Python\\Platformer\\audio\\pickup.wav')
+pickup_fx = pygame.mixer.Sound('audio\\pickup.wav')
 pickup_fx.set_volume(0.2)
-water_fx = pygame.mixer.Sound('C:\\Users\\inzah\\Documents\\Python\\Platformer\\audio\\water.wav')
+water_fx = pygame.mixer.Sound('audio\\water.wav')
 water_fx.set_volume(0.2)
-death_fx = pygame.mixer.Sound('C:\\Users\\inzah\\Documents\\Python\\Platformer\\audio\\oof.wav')
+death_fx = pygame.mixer.Sound('audio\\oof.wav')
 water_fx.set_volume(0.2)
 
 # Load images:
 # button images
-start_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\start_btn.png').convert_alpha()
-restart_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\restart_btn.png').convert_alpha()
-exit_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\exit_btn.png').convert_alpha()
-editor_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\editor_btn.png').convert_alpha()
-menu_btn_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\menu_btn.png').convert_alpha()
-exit_to_menu_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\exit_to_menu.png').convert_alpha()
-resume_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\resume_btn.png').convert_alpha()
-pause_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\pause_btn.png').convert_alpha()
+start_img = pygame.image.load('img\\start_btn.png').convert_alpha()
+restart_img = pygame.image.load('img\\restart_btn.png').convert_alpha()
+exit_img = pygame.image.load('img\\exit_btn.png').convert_alpha()
+editor_img = pygame.image.load('img\\editor_btn.png').convert_alpha()
+menu_btn_img = pygame.image.load('img\\menu_btn.png').convert_alpha()
+exit_to_menu_img = pygame.image.load('img\\exit_to_menu.png').convert_alpha()
+resume_img = pygame.image.load('img\\resume_btn.png').convert_alpha()
+pause_img = pygame.image.load('img\\pause_btn.png').convert_alpha()
 # bg images
-sky_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\sky.png').convert_alpha()
-mountain_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\mountain.png').convert_alpha()
-pine1_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine1.png').convert_alpha()
-pine2_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\background\\pine2.png').convert_alpha()
+sky_img = pygame.image.load('img\\background\\sky.png').convert_alpha()
+mountain_img = pygame.image.load('img\\background\\mountain.png').convert_alpha()
+pine1_img = pygame.image.load('img\\background\\pine1.png').convert_alpha()
+pine2_img = pygame.image.load('img\\background\\pine2.png').convert_alpha()
 # title pages
-menu_bg_img = pygame.transform.scale(
-    pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\menu_bg.png').convert_alpha(),
-    (WIDTH, HEIGHT))
-pause_bg_img = pygame.transform.scale(
-    pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\pause_bg.png').convert_alpha(),
-    (WIDTH, HEIGHT))
+menu_bg_img = pygame.transform.scale(pygame.image.load('img\\menu_bg.png').convert_alpha(), (WIDTH, HEIGHT))
+pause_bg_img = pygame.transform.scale(pygame.image.load('img\\pause_bg.png').convert_alpha(),(WIDTH, HEIGHT))
 # tiles
 tile_img_list = []
 for i in range(TILE_TYPES):
-    img = pygame.transform.scale(
-        pygame.image.load(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\tile\\{i}.png').convert_alpha(),
-        (TILE_SIZE, TILE_SIZE))
+    img = pygame.transform.scale(pygame.image.load(f'img\\tile\\{i}.png').convert_alpha(), (TILE_SIZE, TILE_SIZE))
     tile_img_list.append(img)
 # ammo
-bullet_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\bullet.png').convert_alpha()
-grenade_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\grenade.png').convert_alpha()
-mine_img = pygame.image.load('C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\mine.png').convert_alpha()
+bullet_img = pygame.image.load('img\\icons\\bullet.png').convert_alpha()
+grenade_img = pygame.image.load('img\\icons\\grenade.png').convert_alpha()
+mine_img = pygame.image.load('img\\icons\\mine.png').convert_alpha()
 # pickups
-health_box_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\health_box.png').convert_alpha()
-ammo_box_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\ammo_box.png').convert_alpha()
-grenade_box_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\grenade_box.png').convert_alpha()
-mine_box_img = pygame.image.load(
-    'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\icons\\mine_box.png').convert_alpha()
+health_box_img = pygame.image.load('img\\icons\\health_box.png').convert_alpha()
+ammo_box_img = pygame.image.load('img\\icons\\ammo_box.png').convert_alpha()
+grenade_box_img = pygame.image.load('img\\icons\\grenade_box.png').convert_alpha()
+mine_box_img = pygame.image.load('img\\icons\\mine_box.png').convert_alpha()
 item_boxes = {
     'Health': health_box_img,
     'Ammo': ammo_box_img,
@@ -246,10 +230,9 @@ class Solider(pygame.sprite.Sprite):
             temp_list = []
             # Count files in folder
             num_of_frames = len(
-                os.listdir(f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\{self.type}\\{type}'))
+                os.listdir(f'img\\{self.type}\\{type}'))
             for i in range(num_of_frames):
-                img = pygame.image.load(
-                    f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\{self.type}\\{type}\\{i}.png').convert_alpha()
+                img = pygame.image.load(f'img\\{self.type}\\{type}\\{i}.png').convert_alpha()
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
                 temp_list.append(img)
             self.anim_list.append(temp_list)
@@ -781,8 +764,7 @@ class Explosion(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.anim_list = []
         for i in range(1, 6):
-            img = pygame.image.load(
-                f'C:\\Users\\inzah\\Documents\\Python\\Platformer\\img\\explosion\\{i}.png').convert_alpha()
+            img = pygame.image.load(f'img\\explosion\\{i}.png').convert_alpha()
             img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
             self.anim_list.append(img)
         self.frame_index = 0
